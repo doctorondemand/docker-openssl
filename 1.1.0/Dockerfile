@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:buster-slim
 
 # ensure local openssl is preferred over distribution openssl
 ENV PATH /usr/local/bin:$PATH
