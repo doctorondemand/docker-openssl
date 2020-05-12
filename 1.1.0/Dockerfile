@@ -21,7 +21,7 @@ RUN set -x \
     && wget -O openssl.tar.gz "https://www.openssl.org/source/openssl-$OPENSSL_VERSION.tar.gz" \
     && wget -O openssl.tar.gz.asc "https://www.openssl.org/source/openssl-$OPENSSL_VERSION.tar.gz.asc" \
     && export GNUPGHOME="$(mktemp -d)" \
-    && gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$GPG_KEY" \
+    && gpg --keyserver ha.pool.sks-keyservers.net --recv-keys $GPG_KEY \
     && gpg --batch --verify openssl.tar.gz.asc openssl.tar.gz \
     && rm -r "$GNUPGHOME" openssl.tar.gz.asc \
     && mkdir -p /usr/src/openssl \
