@@ -3,8 +3,9 @@ FROM debian:buster-slim
 # ensure local openssl is preferred over distribution openssl
 ENV PATH /usr/local/ssl/bin:$PATH
 
-ENV OPENSSL_VERSION 1.0.2s
 ENV GPG_KEY 8657ABB260F056B1E5190839D9C4D26D0E604491 5B2545DAB21995F4088CEFAA36CEE4DEB00CFE33 ED230BEC4D4F2518B9D7DF41F0DB4D21C1D35231 C1F33DD8CE1D4CC613AF14DA9195C48241FBF7DD 	7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C E5E52560DD91C556DDBDA5D02064C53641C25E5D
+
+ENV OPENSSL_VERSION 1.0.2u
 
 RUN set -x \
     && buildDeps=' \
@@ -14,6 +15,9 @@ RUN set -x \
         make \
         perl \
         wget \
+        gpg \
+        dirmngr \
+        gpg-agent \
     ' \
     && apt-get update && apt-get install -y --no-install-recommends $buildDeps \
     && rm -rf /var/lib/apt/lists/* \
